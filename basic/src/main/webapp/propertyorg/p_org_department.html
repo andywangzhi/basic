@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>物业部门管理</title>
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/default/easyui.css" />
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/icon.css" />
+   <script type="text/javascript" src="/basicinfo/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/locale/easyui-lang-zh_CN.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/common.js"></script>
+   <script type="text/javascript" src="p_org_department.js"></script>
+
+</head>
+<body>
+	<div>
+		<div >
+			<form id="searchFrom">
+			<fieldset style="color:#333; border:#06c dashed 1px;width: 80%">
+				<table id="searchT" style="cellpadding: 5px; font-size: 12px;border-spacing: 5px;width: 100%" >
+					<tr>
+						<td align="right">部门名称</td>
+						<td><input id="q_deptName" class="easyui-textbox" name="deptName"  /></td>
+						<td align="right">所属公司</td>
+						<td><input id="q_com_combox" name="compId" class="easyui-combobox" /></td>
+					</tr>
+					<tr>
+						<td colspan="6" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+							style="width: 80px">查询</a>
+							<a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">清除</a></td>
+					</tr>
+				</table>
+				</fieldset>
+			</form>
+		</div>
+		<div >
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="dlgDIV">
+			<form id="dataForm" method="post">
+				<input id="id" hidden="true" name="id">
+				<input id="createTime" hidden="true" name="createTime">
+				<table style="cellpadding: 5px">
+					<tr>
+						<td align="right">部门名称</td>
+						<td><input id="deptName" class="easyui-textbox"
+							required="required" name="deptName"  /></td>
+					</tr>
+					<tr>
+						<td align="right">部门代码</td>
+						<td ><input class="easyui-textbox" required="required" style="width: 400px"
+							id="deptCode" name="deptCode" /></td>
+					</tr>
+					<tr>
+						<td align="right">所属公司</td>
+						<td><input id="com_combox" name="compId" class="easyui-combobox" required="required" /></td>
+					</tr>
+					<tr>
+						<td align="right">备注：</td>
+						<td ><input id="deptRemark" class="easyui-textbox" 
+						data-options="multiline:true" style="width: 400px;height:100px" name="deptRemark" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

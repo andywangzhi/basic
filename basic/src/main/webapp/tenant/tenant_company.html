@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>物业公司管理</title>
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/icon.css" />
+   <!-- Bootstrap styles -->
+	<link rel="stylesheet" type="text/css" href="/basicinfo/js/upload/css/bootstrap.min.css">
+	<!-- Generic page styles -->
+	<link rel="stylesheet" type="text/css" href="/basicinfo/js/upload/css/style.css">
+	<!-- blueimp Gallery styles -->
+	<link rel="stylesheet" type="text/css" href="/basicinfo/js/upload/css/blueimp-gallery.min.css">
+	<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+	<link rel="stylesheet" type="text/css" href="/basicinfo/js/upload/css/jquery.fileupload.css">
+	<link rel="stylesheet" type="text/css" href="/basicinfo/js/upload/css/jquery.fileupload-ui.css">
+	<link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/default/easyui.css" />
+   <script type="text/javascript" src="/basicinfo/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/locale/easyui-lang-zh_CN.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/common.js"></script>
+</head>
+<body>
+	<div>
+		<div >
+			<form id="searchFrom">
+			<fieldset style="color:#333; border:#06c dashed 1px;width: 80%">
+				<table id="searchT" style="cellpadding: 5px; font-size: 12px;border-spacing: 5px;width: 100%" >
+					<tr>
+						<td align="right">公司名称</td>
+						<td><input class="easyui-textbox" id="q_compName" style="width: 120px"
+							name="tComName" /></td>
+					</tr>
+					<tr>
+						<td colspan="6" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+							style="width: 80px">查询</a>
+							<a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">清除</a></td>
+					</tr>
+				</table>
+				</fieldset>
+			</form>
+		</div>
+		<div >
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="dlgDIV" class="easyui-tabs" style="width:100%;height:550px">
+		<div  title="基本信息">
+			<form id="dataForm" method="post">
+				<input id="id" hidden="true" name="id">
+				<input id="createTime" hidden="true" name="createTime">
+				<input id="descPicLink" hidden="true" name="descPicLink">
+				<table style="cellpadding: 5px">
+					<tr>
+						<td align="right" style="padding: 5px">公司名称</td>
+						<td><input id="compName" class="easyui-validatebox"
+							required="required" name="tComName"  /></td>
+					</tr>
+					<tr>
+						<td align="right" style="padding: 5px">公司性质</td>
+						<td ><input class="easyui-validatebox" required="required" style="width: 400px"
+							id="tComPro" name="tComPro" /></td>
+					</tr>
+					<tr>
+						<td align="right" style="padding: 5px">公司行业</td>
+						<td ><input class="easyui-validatebox" required="required" style="width: 400px"
+							id="tComTrade" name="tComTrade" /></td>
+					</tr>
+					<tr>
+						<td align="right" style="padding: 5px">公司规模</td>
+						<td ><input class="easyui-validatebox" required="required" style="width: 400px"
+							id="tComSize" name="tComSize" /></td>
+					</tr>
+					<tr>
+						<td align="right" style="padding: 5px">所在地</td>
+						<td ><input class="easyui-validatebox" required="required" style="width: 400px"
+							id="location" name="location" /></td>
+					</tr>
+					<tr>
+						<td align="right" style="padding: 5px">联系电话</td>
+						<td ><input class="easyui-validatebox" required="required" style="width: 400px"
+							id="phoneNum" name="phoneNum" /></td>
+					</tr>
+					<tr>
+						<td align="right" style="padding: 3px">联系人</td>
+						<td><input id="contacts" name="contacts"  /></td>
+					</tr>
+					<tr>
+						<td align="right" style="padding: 2px">公司邮箱</td>
+						<td><input id="email" class="easyui-validatebox textbox"
+						 name="email" data-options="required:false,validType:'email'" /></td>
+					</tr>
+					<tr>
+						<td align="right" style="padding: 2px">公司网址</td>
+						<td><input id="siteAddr" name="siteAddr" 
+						class="easyui-validatebox textbox" data-options="required:false,validType:'url'" /></td>
+					</tr>
+					<tr>
+						<td align="right" style="padding: 2px">公司简介</td>
+						<td ><input id="tComDesc" class="easyui-textbox" 
+						data-options="multiline:true" style="width: 400px;height:200px" name="tComDesc" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div title="租户单位照片维护">
+		<div class="container">
+    <!-- The file upload form used as target for the file upload widget -->
+    <form id="fileupload" action="/basicinfo/file/uploadImage" method="POST" enctype="multipart/form-data">
+        <!-- Redirect browsers with JavaScript disabled to the origin page -->
+        <noscript><input type="hidden" name="redirect" value="https://blueimp.github.io/jQuery-File-Upload/"></noscript>
+        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+        <div class="row fileupload-buttonbar">
+            <div class="col-lg-7">
+                <!-- The fileinput-button span is used to style the file input field as button -->
+                <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Add files...</span>
+                    <input type="file" name="file" multiple>
+                </span>
+                <button type="submit" class="btn btn-primary start">
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>Start upload</span>
+                </button>
+                <button type="reset" class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel upload</span>
+                </button>
+                <!-- The global file processing state -->
+                <span class="fileupload-process"></span>
+            </div>
+            <!-- The global progress state -->
+            <div class="col-lg-5 fileupload-progress fade">
+                <!-- The global progress bar -->
+                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                </div>
+                <!-- The extended global progress state -->
+                <div class="progress-extended">&nbsp;</div>
+            </div>
+        </div>
+        <!-- The table listing the files available for upload/download -->
+        <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+    </form>
+    <br>
+</div>
+<!-- The blueimp Gallery widget -->
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            <p class="size">Processing...</p>
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+                <button class="btn btn-primary start" disabled>
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>Start</span>
+                </button>
+            {% } %}
+            {% if (!i) { %}
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        <td>
+            <span class="preview">
+                {% if (file.thumbnailUrl) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                {% } %}
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                {% if (file.url) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                {% } else { %}
+                    <span>{%=file.name%}</span>
+                {% } %}
+            </p>
+            {% if (file.error) { %}
+                <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            {% if (file.deleteUrl) { %}
+                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>Delete</span>
+                </button>
+                <input type="checkbox" name="delete" value="1" class="toggle">
+            {% } else { %}
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="/basicinfo/js/upload/js/vendor/jquery.ui.widget.js"></script>
+<!-- The Templates plugin is included to render the upload/download listings -->
+<script src="/basicinfo/js/upload/js/tmpl.min.js"></script>
+<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+<script src="/basicinfo/js/upload/js/load-image.all.min.js"></script>
+<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+<script src="/basicinfo/js/upload/js/canvas-to-blob.min.js"></script>
+<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+<script src="/basicinfo/js/upload/js/bootstrap.min.js"></script>
+<!-- blueimp Gallery script -->
+<script src="/basicinfo/js/upload/js/jquery.blueimp-gallery.min.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="/basicinfo/js/upload/js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="/basicinfo/js/upload/js/jquery.fileupload.js"></script>
+<!-- The File Upload processing plugin -->
+<script src="/basicinfo/js/upload/js/jquery.fileupload-process.js"></script>
+<!-- The File Upload image preview & resize plugin -->
+<script src="/basicinfo/js/upload/js/jquery.fileupload-image.js"></script>
+<!-- The File Upload audio preview plugin -->
+<script src="/basicinfo/js/upload/js/jquery.fileupload-audio.js"></script>
+<!-- The File Upload video preview plugin -->
+<script src="/basicinfo/js/upload/js/jquery.fileupload-video.js"></script>
+<!-- The File Upload validation plugin -->
+<script src="/basicinfo/js/upload/js/jquery.fileupload-validate.js"></script>
+<!-- The File Upload user interface plugin -->
+<script src="/basicinfo/js/upload/js/jquery.fileupload-ui.js"></script>
+<!-- The main application script -->
+<script type="text/javascript">
+// Initialize the jQuery File Upload widget:
+var  url = '/basicinfo/file/uploadImage';
+$('#fileupload').fileupload({  
+    autoUpload: false,
+    //是否自动上传  
+    //url: url,//上传地址  
+    dataType: 'json',
+    maxNumberOfFiles: 5,
+    maxFileSize: 1000000,
+    acceptFileTypes:  /(\.|\/)(gif|jpe?g|png)$/i ,
+    done: function (e, data) {//设置文件上传完毕事件的回调函数  
+        //$.each(data.result.files, function (index, file) {
+        if ($('#descPicLink').val()) {
+    	   var v= $('#descPicLink').val()+";"+data.result.imgurl;
+		   $('#descPicLink').val(v);
+		}else{
+			$('#descPicLink').val(data.result.imgurl);
+		}
+    },  
+    progressall: function (e, data) {//设置上传进度事件的回调函数  
+        var progress = parseInt(data.loaded / data.total * 5, 10);  
+        $('#progress .bar').css(  
+            'width',  
+            progress + '%'  
+        );  
+    }  
+});  
+</script>
+		 </div>
+	</div>
+	<div id="upload_file_div">
+		<form id="uploadDataForm" method="post" enctype="multipart/form-data">
+			<table style="cellpadding: 5px; cellspacing: 12 px;">
+				<tr>
+					<td align="right">文件上传</td>
+					<td ><input type="file" id="uploadFile" name="uploadFile" ></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+<script type="text/javascript" src="tenant_company.js"></script>
+</body>
+</html>

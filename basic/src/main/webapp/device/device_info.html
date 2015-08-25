@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>设备信息管理</title>
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/default/easyui.css" />
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/icon.css" />
+   <script type="text/javascript" src="/basicinfo/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/locale/easyui-lang-zh_CN.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/common.js"></script>
+   <script type="text/javascript" src="device_info.js"></script>
+
+</head>
+<body>
+	<div>
+		<div >
+			<form id="searchFrom">
+			<fieldset style="color:#333; border:#06c dashed 1px;width: 80%">
+				<table id="searchT" style="cellpadding: 5px; font-size: 12px;border-spacing: 5px;width: 100%" >
+					<tr>
+						<td align="right">设备名称</td>
+						<td><input id="q_deviceName" name="deviceName"  /></td>
+					</tr>
+					<tr> 
+						<td align="right">设备代码</td>
+						<td ><input style="width: 400px"
+							id="FAAeviceCode" name="deviceCode" /></td>
+					</tr>
+					<tr>
+						<td align="right">所属品牌分类</td>
+						<td ><input id="q_brandType_combox" class="easyui-combobox"
+							style="width: 183px" name="brandId"></td>
+					</tr>
+					<tr>
+					<td align="right">所属自定义分类</td>
+						<td ><input id="q_cTypeId" style="width: 183px" name="cTypeId"></td>
+					</tr>
+					<tr>
+						<td colspan="6" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" style="width: 80px"
+							data-options="iconCls:'icon-search'">查询</a>
+							<a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">清除</a></td>
+					</tr>
+				</table>
+				</fieldset>
+			</form>
+		</div>
+		<div >
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="dlgDIV">
+			<form id="dataForm" method="post">
+				<input id="id" hidden="true" name="id">
+				<input id="createTime" hidden="true" name="createTime">
+				<table style="cellpadding: 5px">
+					<tr>
+						<td align="right">设备名称</td>
+						<td><input id="deviceName" class="easyui-validatebox"
+							required="required" name="deviceName"  /></td>
+					</tr>
+					<tr> 
+						<td align="right">设备代码</td>
+						<td ><input class="easyui-validatebox" required="required" style="width: 400px"
+							id="deviceCode" name="deviceCode" /></td>
+					</tr>
+					<tr>
+						<td align="right">所属品牌分类</td>
+						<td ><input id="brandType_combox" class="easyui-combobox"
+							style="width: 183px" name="brandId"></td>
+					</tr>
+					<tr>
+					<td align="right">所属自定义分类</td>
+						<td ><input id="cTypeId" style="width: 183px" name="cTypeId"></td>
+					</tr>
+					<tr>
+						<td align="right">备注：</td>
+						<td ><input id="deviceRemark" class="easyui-textbox" 
+						data-options="multiline:true" style="width: 400px;height:100px" name="deviceRemark" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zw.repository.MySqlSequenceMapper">
+
+<select id="getNextVal" resultType="Integer" parameterType="String">
+	select nextval(#{seqName,jdbcType=VARCHAR}) 
+</select>
+
+<select id="getCurrentVal" resultType="Integer" parameterType="String">
+	select currval(#{seqName,jdbcType=VARCHAR}) 
+</select>
+
+<update id="setVal" parameterType="map">
+		select setval(#{seqName,jdbcType=VARCHAR},#{value,jdbcType=INTEGER})
+</update>
+
+</mapper>

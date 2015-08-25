@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>物业公司管理</title>
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/default/easyui.css" />
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/icon.css" />
+   <link rel="stylesheet" type="text/css" href="/basicinfo/css/jquery.autocomplete.css">
+   <script type="text/javascript" src="/basicinfo/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/locale/easyui-lang-zh_CN.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.autocomplete.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/common.js"></script>
+   <script type="text/javascript" src="owner_district_info.js"></script>
+   <script type="text/javascript"
+		src="/basicinfo/mainandaffiliated/js/apiCommon.js"></script>
+  <script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/api/mainandaffiliatedinfoquery/js/districtTreeWithCbox.js"></script>
+
+</head>
+<body>
+	<div>
+		<div >
+			<form id="searchFrom">
+			<input id="q_ownerId" hidden="true" name="ownerId">
+			<fieldset style="color:#333; border:#06c dashed 1px;width: 80%">
+				<table id="searchT" style="cellpadding: 5px; font-size: 12px;border-spacing: 5px;width: 100%" >
+					<tr>
+						<td align="right">所属业主名称</td>
+						<td><input id="q_owner" style="width: 260px" name="ownerName"></td>
+						<td align="right">所在位置</td>
+						<td ><input class="easyui-validatebox" required="required"
+							id="tt2" name="districCode" /></td>
+					</tr>
+					<tr>
+						<td colspan="6" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+							style="width: 80px">查询</a>
+							<a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">清除</a></td>
+					</tr>
+				</table>
+				</fieldset>
+			</form>
+		</div>
+		<div >
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="dlgDIV">
+			<form id="dataForm" method="post">
+				<input id="id" hidden="true" name="id">
+				<input id="createTime" hidden="true" name="createTime">
+				<input id="ownerId" hidden="true" name="ownerId">
+				<input id="districtCodes" hidden="true" name="districCode">
+				<table style="cellpadding: 5px,with:80%">
+					<tr>
+					<td align="right">所属业主</td>
+						<td ><input id="owner" required="required"
+						 class="easyui-validatebox"  style="width: 260px" name="ownerName"></td>
+					</tr>
+					<tr>
+						<td align="right">所在位置</td>
+						<td >
+							<div style="width: 200px; height: auto; border: 1px solid #ccc;">
+								<ul id="tt" class="easyui-tree"></ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

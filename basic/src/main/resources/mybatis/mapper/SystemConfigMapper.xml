@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zw.repository.SystemConfigMapper">
+	<resultMap id="BaseResultMap" type="com.zw.entity.SystemConfig">
+		<!--
+			  WARNING - @mbggenerated
+			-->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name_space" jdbcType="VARCHAR" property="nameSpace" />
+		<result column="config_key" jdbcType="VARCHAR" property="configKey" />
+		<result column="config_name" jdbcType="VARCHAR" property="configName" />
+		<result column="config_ename" jdbcType="VARCHAR" property="configEname" />
+		<result column="config_value" jdbcType="VARCHAR" property="configValue" />
+		<result column="default_val" jdbcType="VARCHAR" property="defaultVal" />
+		<result column="config_desc" jdbcType="VARCHAR" property="configDesc" />
+		<result column="sort" jdbcType="INTEGER" property="sort" />
+		<result column="config_status" jdbcType="VARCHAR" property="configStatus" />
+		<result column="activate" jdbcType="VARCHAR" property="activate" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	</resultMap>
+  
+	<sql id="Base_Column_List">
+  		id,name_space,config_key,config_name,config_ename,
+  		config_value,default_val,config_desc,sort,
+  		config_status,activate,create_time,update_time
+	</sql>
+	
+	<select id="listByExample" resultMap="BaseResultMap" parameterType="map">
+		select
+		<include refid="Base_Column_List" />
+		 from system_config
+		<where>
+			<if test="id != null">
+				and id=#{id,jdbcType=INTEGER}
+			</if>
+			<if test="nameSpace !=null and nameSpace !='' ">
+				and name_space like CONCAT('%','${nameSpace}','%' )
+			</if>
+			<if test="configKey !=null and configKey !='' ">
+				and config_key = #{configKey,jdbcType=VARCHAR}
+			</if>
+			<if test="configName !=null and configName !='' ">
+				and config_name like CONCAT('%','${configName}','%' )
+			</if>
+			<if test="configEname !=null and configEname !='' ">
+				and config_ename like CONCAT('%','${configEname}','%' )
+			</if>
+			<if test="configStatus !=null and configStatus !='' ">
+				and config_status = #{configStatus,jdbcType=VARCHAR}
+			</if>
+			<if test="activate !=null and activate !='' ">
+				and activate=#{activate,jdbcType=VARCHAR}
+			</if>
+		</where>
+		<if
+			test="(orderBy != null and sort == null) or (orderBy != null and sort == 'asc') 
+			or (orderBy != null and sort == 'desc')">
+			order by ${orderBy} ${sort}
+		</if>
+	</select>
+</mapper>

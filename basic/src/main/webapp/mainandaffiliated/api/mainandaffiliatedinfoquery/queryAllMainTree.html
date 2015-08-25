@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>主体与附属树一次加载</title>
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/basicinfo/css/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/basicinfo/css/icon.css">
+<script type="text/javascript" src="/basicinfo/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/js/apiCommon.js"></script>
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/api/mainandaffiliatedinfoquery/js/queryAllMainTree.js"></script>
+</head>
+<body>
+	<div style="width: 1200px; height: auto; border: 1px solid #ccc;">
+		<a href="#" id="treeValue" class="easyui-linkbutton"
+			style="width: 180px">获取树的选中的值</a> <a href="#" id="combotreeValue"
+			class="easyui-linkbutton" style="width: 180px">获取下拉树选中的值</a> <a
+			href="#" id="treeText" class="easyui-linkbutton" style="width: 180px">获取树选中的文本</a>
+		<a href="#" id="combotreeText" class="easyui-linkbutton"
+			style="width: 180px">获取下拉树选中的文本</a> <a href="#" id="treeClear"
+			class="easyui-linkbutton" style="width: 180px">清除树选中</a> <a href="#"
+			id="combotreeClear" class="easyui-linkbutton" style="width: 180px">清除下拉树选中</a>
+	</div>
+	<div style="width: 200px; height: auto; border: 1px solid #ccc;">
+		<ul id="tt" class="easyui-tree"></ul>
+	</div>
+
+	<div style="width: 200px; height: auto; border: 1px solid #ccc;">
+		<input id="tt2" class="easyui-combobox" style="width: 200px" />
+	</div>
+</body>
+</html>

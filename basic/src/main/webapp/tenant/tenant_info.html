@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>租户信息</title>
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/default/easyui.css" />
+   <link rel="stylesheet" type="text/css" href="/basicinfo/css/jquery.autocomplete.css">
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/icon.css" />
+   <script type="text/javascript" src="/basicinfo/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/locale/easyui-lang-zh_CN.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.autocomplete.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/common.js"></script>
+   <script type="text/javascript" src="tenant_info.js"></script>
+   <script type="text/javascript"
+		src="/basicinfo/mainandaffiliated/js/apiCommon.js"></script>
+  <script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/api/mainandaffiliatedinfoquery/js/districtTreeWithCbox.js"></script>
+
+</head>
+<body>
+	<div>
+		<div >
+			<form id="searchFrom">
+			<fieldset style="color:#333; border:#06c dashed 1px;width: 80%">
+				<table id="searchT" style="cellpadding: 5px; font-size: 12px;border-spacing: 5px;width: 100%" >
+					<tr>
+						<td align="right">租户类型</td>
+						<td><input id="q_tenantType" name="tenantType"  /></td>
+					</tr>
+					<tr>
+						<td align="right">租户全称</td>
+						<td><input id="q_name" name="tenantName"  /></td>
+					</tr>
+					<tr>
+						<td colspan="6" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+							style="width: 80px">查询</a>
+							<a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">清除</a></td>
+					</tr>
+				</table>
+				</fieldset>
+			</form>
+		</div>
+		<div >
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<!-- 租赁情况列表查看 -->
+		<div id="tenatInfoDIV">
+			<table id="tenatinfo_dataGrid" class="easyui-datagrid"></table>
+		</div>
+		
+		<div id="dlgDIV">
+		<form id="dataForm" method="post">
+			<div class="easyui-tabs" style="width:100%;height:250px">
+				<div title="基本信息" style="padding:10px">
+					
+						<input id="id" hidden="true" name="id">
+						<input id="createTime" hidden="true" name="createTime">
+						<input id="districtCodes" hidden="true" name="districtCodes">
+						<input id="tenantId" hidden="true" name="tenantId">
+						<table style="cellpadding: 5px,with:80%">
+							<tr >
+								<td align="right">租户类型</td>
+								<td><input id="tenantType" name="tenantType" 
+								class="easyui-combobox" /></td>
+							</tr>
+							<tr class="tr_p">
+								<td align="right">租户名称(个人)</td>
+								<td><input id="tenantName" class="easyui-validatebox" name="tenantName"  /></td>
+							</tr>
+							<tr class="tr_p">
+								<td align="right">联系电话(个人)</td>
+								<td><input id="phoneNum" class="easyui-textbox" 
+								name="phoneNum"  /></td>
+							</tr>
+							<tr class="tr_p">
+								<td align="right">系统账户</td>
+								<td><input id="account" class="easyui-textbox" 
+								name="account"  />
+								<a href="#" id="test" class="easyui-linkbutton" data-options="" style="width:60px">检测</a>
+								<div id="show_message"></div>
+								</td>
+							</tr>
+							<tr class="tr_c">
+							<td align="right">租户单位</td>
+								<td ><input id="compName" 
+								class="easyui-validatebox"  style="width: 260px" name="compName"></td>
+							</tr>
+						</table>
+					
+				</div>
+				<div title="租赁信息">
+							<table style="cellpadding: 5px,with:80%">
+							<tr>
+								<td align="right">所在位置</td>
+								<td >
+									<div style="width: 200px; height: auto; border: 1px solid #ccc;">
+										<ul id="tt" class="easyui-tree"></ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td align="right">开始租用时间</td>
+								<td><input id="retDate" class="easyui-datebox"
+								data-options="formatter:myformatter,parser:myparser" name="retDateStr"  /></td>
+							</tr>
+							<tr>
+								<td align="right">到期时间</td>
+								<td><input id="expireDate" name="expireDateStr" 
+								class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" /></td>
+							</tr>
+						</table>
+				</div>
+			</div>
+		</form>
+		</div>
+	</div>
+	<div id="upload_file_div">
+		<form id="uploadDataForm" method="post" enctype="multipart/form-data">
+			<table style="cellpadding: 5px; cellspacing: 12 px;">
+				<tr>
+						<td align="right">楼盘名:</td>
+						<td><input id="community_id" class="easyui-combobox"
+							style="width: 120px" name="communityCode" required="required"/></td>
+					</tr>
+				<tr>
+					<td align="right">文件上传</td>
+					<td ><input type="file" id="uploadFile" name="uploadFile" ></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<script type="text/javascript">
+		function myformatter(date){
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate();
+			return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
+		}
+		function myparser(s){
+			if (!s) return new Date();
+			var ss = (s.split('-'));
+			var y = parseInt(ss[0],10);
+			var m = parseInt(ss[1],10);
+			var d = parseInt(ss[2],10);
+			if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+				return new Date(y,m-1,d);
+			} else {
+				return new Date();
+			}
+		}
+	</script>
+
+</body>
+</html>

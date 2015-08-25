@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>物业公司管理</title>
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/default/easyui.css" />
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/icon.css" />
+   <script type="text/javascript" src="/basicinfo/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/locale/easyui-lang-zh_CN.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/common.js"></script>
+   <script type="text/javascript" src="p_org_company.js"></script>
+
+</head>
+<body>
+	<div>
+		<div >
+			<form id="searchFrom">
+			<fieldset style="color:#333; border:#06c dashed 1px;width: 80%">
+				<table id="searchT" style="cellpadding: 5px; font-size: 12px;border-spacing: 5px;width: 100%" >
+					<tr>
+						<td align="right">公司代码</td>
+						<td><input id="q_ompCode" style="width: 120px"
+							name="compCode" /></td>
+						<td align="right">公司名称</td>
+						<td><input class="easyui-textbox" id="q_compName" style="width: 120px"
+							name="compName" /></td>
+					</tr>
+					<tr>
+						<td colspan="6" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+							style="width: 80px">查询</a>
+							<a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">清除</a></td>
+					</tr>
+				</table>
+				</fieldset>
+			</form>
+		</div>
+		<div >
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="dlgDIV">
+			<form id="dataForm" method="post">
+				<input id="id" hidden="true" name="id">
+				<input id="createTime" hidden="true" name="createTime">
+				<table style="cellpadding: 5px">
+					<tr>
+						<td align="right">公司名称</td>
+						<td><input id="compName" class="easyui-validatebox"
+							required="required" name="compName"  /></td>
+					</tr>
+					<tr>
+						<td align="right">公司代码</td>
+						<td ><input class="easyui-validatebox" required="required" style="width: 400px"
+							id="compCode" name="compCode" /></td>
+					</tr>
+					<tr>
+						<td align="right">公司地址</td>
+						<td><input id="compAddress" name="compAddress"  /></td>
+					</tr>
+					<tr>
+						<td align="right">联系电话</td>
+						<td><input id="compTelphone"  name="compTelphone"  /></td>
+					</tr>
+					<tr>
+						<td align="right">公司邮箱</td>
+						<td><input id="compEmail" class="easyui-validatebox textbox"
+						 name="compEmail" data-options="required:false,validType:'email'" /></td>
+					</tr>
+					<tr>
+						<td align="right">公司网站</td>
+						<td><input id="compWebsite" name="compWebsite" 
+						class="easyui-validatebox textbox" data-options="required:false,validType:'url'" /></td>
+					</tr>
+					<tr>
+						<td align="right">备注：</td>
+						<td ><input id="compRemark" class="easyui-textbox" 
+						data-options="multiline:true" style="width: 400px;height:100px" name="compRemark" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

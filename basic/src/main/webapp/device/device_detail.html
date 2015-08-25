@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>设备详情管理</title>
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/default/easyui.css" />
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/icon.css" />
+   <link rel="stylesheet" type="text/css" href="/basicinfo/css/jquery.autocomplete.css">
+   <script type="text/javascript" src="/basicinfo/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/locale/easyui-lang-zh_CN.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/common.js"></script>
+   <script type="text/javascript" src="device_detail.js"></script>
+   <script type="text/javascript"
+		src="/basicinfo/mainandaffiliated/js/apiCommon.js"></script>
+  <script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/api/mainandaffiliatedinfoquery/js/queryMainAndAffiliatedTree.js"></script>
+	<script type="text/javascript" src="/basicinfo/js/jquery.autocomplete.js"></script>
+
+</head>
+<body>
+	<div>
+		<div >
+			<form id="searchFrom">
+			<input id="q_ownerId" hidden="true" name="ownerId">
+			<fieldset style="color:#333; border:#06c dashed 1px;width: 60%">
+				<table id="searchT" style="cellpadding: 5px; font-size: 12px;border-spacing: 5px;width: 100%" >
+					<tr>
+						<td align="right">设备</td>
+						<td ><input id="q_deviceCode_comboGrid" class="easyui-validatebox"
+						style="width: 183px;" name="deviceCode" /></td>
+						<td align="right">所在位置</td>
+						<td ><input class="easyui-validatebox"
+							id="tt2" name="districCode" /></td>
+						<td align="right">厂家</td>
+						<td><input id="q_vender" name="vender" 
+						class="easyui-combobox" /></td>
+						<td align="right">所属人</td>
+							<td ><input class="easyui-validatebox"
+							id="q_owner" name="ownerName" /></td>
+							<td>&nbsp;&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="6" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" style="width: 80px"
+							data-options="iconCls:'icon-search'">查询</a>
+							<a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">清除</a></td>
+					</tr>
+				</table>
+				</fieldset>
+			</form>
+		</div>
+		<div >
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="qrCodedlg" class="easyui-dialog" data-options="iconCls:'icon-ok'" 
+		style="width:400px;height:400px;padding:10px">
+		
+		</div>
+		<div id="dlgDIV">
+			<form id="dataForm" method="post">
+				<input id="id" hidden="true" name="id">
+				<input id="deviceId" hidden="true" name="deviceId">
+				<input id="createTime" hidden="true" name="createTime">
+				<input id="districtCode" hidden="true" name="districtCode">
+				<input id="opcPath" hidden="true" name="opcMapping.opcPath">
+				<input id="osmServerIp" hidden="true" name="osmMapping.osmServerIp">
+				<input id="ownerId" hidden="true" name="ownerId">
+				<div class="easyui-tabs" style="width:100%;height:400px">
+					<div title="基本信息" style="padding:10px">
+						<table style="cellpadding: 5px; cellspacing: 12 px;">
+							<tr> 
+								<td align="right">设备</td>
+								<td ><input id="deviceCode_comboGrid"
+								style="width: 260px" name="deviceCode" /></td>
+							</tr>
+							<tr> 
+								<td align="right">设备名称</td>
+								<td ><input id="deviceName"
+								style="width: 260px" name="deviceName" /></td>
+							</tr>
+							<tr>
+								<td align="right">所在位置</td>
+								<td >
+									<div style="width: 200px; height: auto; border: 1px solid #ccc;">
+										<ul id="tt" class="easyui-tree"></ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+							<td align="right">所属人</td>
+								<td ><input id="owner" style="width: 260px" name="ownerName"></td>
+							</tr>
+						</table>
+					</div>
+					<div title="厂家信息">
+						<table style="cellpadding: 5px; cellspacing: 12 px;">
+							<tr>
+								<td align="right">厂家</td>
+								<td><input id="vender" name="vender" 
+								class="easyui-combobox" required="required" /></td>
+							</tr>
+							<tr class="tr_xr">
+								<td align="right">迅饶网关服务器</td>
+								<td><input id="xrIp_combox" name="opcMapping.opcServerIp" 
+								class="easyui-combobox"/></td>
+							</tr>
+							<tr class="tr_xr">
+								<td align="right">OPC设备地址映射</td>
+								<td >
+									<div id="opcTreeDiv" style="width: 200px; height: auto; border: 1px solid #ccc; display:none;">
+										<a href="#" class="easyui-linkbutton" onclick="collapseAll()">折叠</a>
+										<a href="#" class="easyui-linkbutton" onclick="expandAll()">展开</a>
+										<a href="#" class="easyui-linkbutton" onclick="getSelected()">获取选中的值</a>
+										<ul id="opcpathTree" class="easyui-tree" 
+										></ul>
+									</div>
+								</td>
+							</tr>
+							<tr class="tr_osm">
+								<td align="right">欧视迈网关服务器</td>
+								<td><input id="osmServiceName" name="osmServiceName" 
+								class="easyui-validatebox" /></td>
+							</tr>
+							<tr class="tr_osm"> 
+								<td align="right">所在楼层</td>
+								<td ><input id="floorNum"
+								style="width: 260px" name="osmMapping.floorNum" /></td>
+							</tr>
+							<tr class="tr_osm"> 
+								<td align="right">所在房间</td>
+								<td ><input id="roomNum"
+								style="width: 260px" name="osmMapping.roomNum" /></td>
+							</tr>
+							<tr class="tr_osm"> 
+								<td align="right">所在位置</td>
+								<td ><input id="logicIndex"
+								style="width: 260px" name="osmMapping.logicIndex" /></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div id="upload_file_div">
+			<form id="uploadDataForm" method="post" enctype="multipart/form-data">
+				<table style="cellpadding: 5px; cellspacing: 12 px;">
+					<tr>
+						<td align="right">楼盘名:</td>
+						<td><input id="community_id" class="easyui-combobox"
+							style="width: 120px" name="communityCode" required="required"/></td>
+					</tr>
+					<tr>
+						<td align="right">文件上传</td>
+						<td ><input type="file" id="uploadFile" name="uploadFile" ></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+</body>
+
+<script>
+		function myLoadFilter(data, parent){
+			var state = $.data(this, 'tree');
+			
+		    function setData(){
+		    	var serno = 1;
+		        var todo = [];
+		        for(var i=0; i<data.length; i++){
+		            todo.push(data[i]);
+		        }
+		        while(todo.length){
+		            var node = todo.shift();
+		            if (node.id == undefined){
+		            	node.id = '_node_' + (serno++);
+		            }
+		            if (node.children && node.children.length){
+		                node.state = 'closed';
+		                node.children1 = node.children;
+		                node.children = undefined;
+		                todo = todo.concat(node.children1);
+		            }
+		        }
+		        state.tdata = data;
+		    }
+		    function find(id){
+		    	var data = state.tdata;
+		    	var cc = [data];
+		    	while(cc.length){
+		    		var c = cc.shift();
+		    		for(var i=0; i<c.length; i++){
+		    			var node = c[i];
+		    			if (node.id == id){
+		    				return node;
+		    			} else if (node.children1){
+		    				cc.push(node.children1);
+		    			}
+		    		}
+		    	}
+		    	return null;
+		    }
+		    
+		    setData();
+		    
+		    var t = $(this);
+		    var opts = t.tree('options');
+		    opts.onBeforeExpand = function(node){
+	    		var n = find(node.id);
+	    		if (n.children && n.children.length){return}
+		    	if (n.children1){
+		    		var filter = opts.loadFilter;
+		    		opts.loadFilter = function(data){return data;};
+		    		t.tree('append',{
+		    			parent:node.target,
+		    			data:n.children1
+		    		});
+		    		opts.loadFilter = filter;
+		    		n.children = n.children1;
+		    	}
+		    };
+			return data;
+		}
+		
+		function collapseAll(){
+			$('#opcpathTree').tree('collapseAll');
+		}
+		function expandAll(){
+			$('#opcpathTree').tree('expandAll');
+		}
+		function getSelected(){
+			var node = $('#opcpathTree').tree('getSelected');
+			if (node){
+				var s = node.id;
+				if (node.attributes){
+					s += ","+node.attributes.p1+","+node.attributes.p2;
+				}
+				alert('选取的opc节点映射值为：'+s);
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>位置管理</title>
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/basicinfo/css/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/basicinfo/css/icon.css">
+<script type="text/javascript" src="/basicinfo/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/basicinfo/js/common.js"></script>
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/api/location/js/location.js"></script>
+</head>
+<body>
+	<div>
+		<div>
+			<fieldset style="width: 90%">
+				<legend style="color: blue">查询条件</legend>
+				<form id="searchFrom">
+					<table id="searchT"
+						style="cellpadding: 5px; font-size: 12px; border-spacing: 5px; width: 90%">
+						<tr>
+							<td align="right">经度:</td>
+							<td><input id="longitude" class="easyui-textbox"
+								style="width: 120px" name="longitude" /></td>
+						    <td align="right">纬度:</td>
+							<td><input id="latitude" class="easyui-textbox"
+								style="width: 120px" name="latitude" /></td>
+						</tr>
+						<tr>
+							<td colspan="6" align="right"><a href="#" id="search"
+								class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+								style="width: 80px">查询</a> <a href="#" id="clearBtn"
+								class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+								style="width: 80px">重置</a></td>
+						</tr>
+					</table>
+				</form>
+			</fieldset>
+		</div>
+		<br />
+		<hr style="border: 3px double blue" width="90%" size="3" align="left" />
+		<br />
+		<div>
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="addDIV">
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>批量导入</title>
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/basicinfo/css/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/basicinfo/css/icon.css">
+<script type="text/javascript" src="/basicinfo/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/basicinfo/js/common.js"></script>
+<script type="text/javascript" src="/basicinfo/js/expand-validdate.js"></script>
+
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/js/common.js"></script>
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/mainandaffiliatedinfomanage/js/maaImport.js"></script>
+</head>
+<body style="TEXT-ALIGN: center;">
+    <fieldset style="width: 90%">
+	<!-- 上传文件 -->
+	<div id="upload_file_div">
+		<form id="uploadDataForm" method="post" enctype="multipart/form-data">
+			<table style="cellpadding: 5px; cellspacing: 12 px;">
+				<tr>
+					<td align="right">类型:</td>
+					<td><input id="type" class="easyui-combobox"
+						style="width: 120px" name="type" /></td>
+				</tr>
+				<tr>
+					<td align="right">楼盘名:</td>
+					<td><input id="community_id" class="easyui-combobox"
+						style="width: 120px" name="community_path_code"
+						required="required" /></td>
+				</tr>
+				<tr>
+					<td align="right">文件上传</td>
+					<td><input type="file" id="uploadFile" name="uploadFile"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><a href="#" id="submit"
+						class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+						style="width: 80px">提交</a> <a href="#" id="clearBtn"
+						class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+						style="width: 80px">重置</a><a href="#" id="mBtn"
+						class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+						style="width: 80px">监控信息</a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	</fieldset>
+	<!-- 显示进度和错误信息 -->
+	<div id="show_upload_info_div" class="easyui-dialog"
+		style="width: 600px; height: 550px;" title="监控详情" iconCls="icon-edit">
+		<div id="show_upload_info_progressbar" class="easyui-progressbar"
+			style="width: 550px;"></div>
+		<div id="show_upload_info_tabs" class="easyui-tabs"
+			style="width: 550px; height: 480px;">
+			<div title="进度信息"
+				style="overflow-x: hidden; overflow-y: auto; width: 550px; height: 470px;"
+				id="schedule_info"></div>
+			<div title="错误信息"
+				style="overflow-x: hidden; overflow-y: auto; width: 550px; height: 470px;"
+				id="error_info"></div>
+		</div>
+	</div>
+</body>
+</html>

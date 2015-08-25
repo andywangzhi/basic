@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+
+<meta charset="utf-8">
+<title>公用信息系统-登录</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="stylesheet" href="css/supersized.css">
+<link rel="stylesheet" href="css/login.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Javascript -->
+<script type="text/javascript" src="/basicinfo/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/basicinfo/js/common.js"></script>
+<script src="js/supersized.3.2.7.min.js"></script>
+<script src="js/supersized-init.js"></script>
+<script src="js/scripts.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/tooltips.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+</head>
+
+<body>
+
+	<div class="page-container">
+		<div class="main_box">
+			<div class="login_box">
+				<div class="login_logo">
+					<img src="images/logo.png">
+				</div>
+
+				<div class="login_form" id="loginDiv">
+					<form action="http://192.168.10.252/dashu-security/login/signIn.do"
+						id="saveForm" method="post">
+						<div class="form-group">
+							<label for="j_username" class="t">用户名：</label> <input
+								id="loginId" value="" name="loginId" type="text"
+								class="form-control x319 in" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<label for="j_password" class="t">密 码：</label> <input
+								id="passWord" value="" name="passWord" type="password"
+								class="password form-control x319 in">
+						</div>
+						<div class="form-group space">
+							<label class="t"></label>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button type="button" id="LoginBtn"
+								class="btn btn-primary btn-lg" >&nbsp;登&nbsp;&nbsp;录
+							</button>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							 <input type="reset"
+								value="&nbsp;重&nbsp;&nbsp;置&nbsp;"
+								class="btn btn-default btn-lg">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="bottom">
+				Copyright &copy; 2014 - 2015 <a href="http://www.dashuchina.com">广州大澍信息技术有限公司</a>
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>

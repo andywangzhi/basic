@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>多PATH_CODE信息分页查询</title>
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/basicinfo/css/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/basicinfo/css/icon.css">
+<script type="text/javascript" src="/basicinfo/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/basicinfo/js/common.js"></script>
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/js/apiCommon.js"></script>
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/api/mainandaffiliatedinfoquery/js/queryInfomationByPageByMultiplePathCode.js"></script>
+</head>
+<body>
+	<div>
+		<div>
+			<form id="searchFrom">
+				<table id="searchT"
+					style="cellpadding: 5px; font-size: 12px; border-spacing: 5px; width: 90%">
+					<tr>
+						<td align="right">查询代码:</td>
+						<td><input id="path_code" class="easyui-textbox"
+							style="width: 120px" name="path_code" /></td>
+						<td align="right">页码:</td>
+						<td><input id="page" class="easyui-textbox"
+							style="width: 120px" name="page" /></td>
+						<td align="right">每页显示条数:</td>
+						<td><input id="rows" class="easyui-textbox"
+							style="width: 120px" name="rows" /></td>
+					</tr>
+					<tr>
+						<td colspan="4" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+							style="width: 180px">查询</a> <a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">重置</a></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div>
+			<table id="communityDataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div>
+			<table id="areaDataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div>
+			<table id="buildingDataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div>
+			<table id="floorDataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div>
+			<table id="unitDataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div>
+			<table id="affiliatedDataGrid" class="easyui-datagrid"></table>
+		</div>
+	</div>
+</body>
+</html>

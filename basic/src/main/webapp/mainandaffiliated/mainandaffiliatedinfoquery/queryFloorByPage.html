@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>楼层分页查询</title>
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/basicinfo/css/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/basicinfo/css/icon.css">
+<script type="text/javascript" src="/basicinfo/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/basicinfo/js/common.js"></script>
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/js/common.js"></script>
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/mainandaffiliatedinfoquery/js/queryFloorByPage.js"></script>
+</head>
+<body>
+	<div>
+		<div>
+			<fieldset style="width: 90%">
+				<legend style="color: blue">查询条件</legend>
+				<form id="searchFrom">
+					<table id="searchT"
+						style="cellpadding: 5px; font-size: 12px; border-spacing: 5px; width: 90%">
+						<tr>
+							<td colspan="1" align="right" style="color: green">[基本条件]</td>
+							<td colspan="5" align="left"><hr align="left"
+									style="border: 1px dashed #F00" size="1" /></td>
+						</tr>
+						<tr>
+							<td align="right">名称:</td>
+							<td><input id="name" class="easyui-textbox"
+								style="width: 120px" name="name" /></td>
+							<td align="right">备注:</td>
+							<td><input id="remark" class="easyui-textbox"
+								style="width: 120px" name="remark" /></td>
+							<td align="right">创建时间：</td>
+							<td><input class="easyui-datebox" id="create_time"
+								style="width: 120px" name="create_time" /></td>
+						</tr>
+						<tr>
+							<td align="right">更新时间：</td>
+							<td><input class="easyui-datebox" id="update_time"
+								style="width: 120px" name="update_time" /></td>
+							<td align="right">创建人ID：</td>
+							<td><input class="easyui-textbox" id="create_user_id"
+								style="width: 120px" name="create_user_id" /></td>
+							<td align="right">更新人ID：</td>
+							<td><input class="easyui-textbox" id="update_user_id"
+								style="width: 120px" name="easyui-textbox" /></td>
+						</tr>
+						<tr>
+							<td colspan="1" align="right" style="color: green">[主体条件]</td>
+							<td colspan="5" align="left"><hr align="left"
+									style="border: 1px dashed #F00" size="1" /></td>
+						</tr>
+						<tr>
+							<td align="right">楼盘名:</td>
+							<td><input id="community_id" class="easyui-combobox"
+								style="width: 120px" name="community_id" /></td>
+							<td align="right">分区名:</td>
+							<td><input id="area_id" class="easyui-combobox"
+								style="width: 120px" name="area_id" /></td>
+							<td align="right">楼宇名:</td>
+							<td><input id="building_id" class="easyui-combobox"
+								style="width: 120px" name="building_id" /></td>
+						</tr>
+						<tr>
+							<td colspan="1" align="right" style="color: green">[路径代码条件]</td>
+							<td colspan="5" align="left"><hr align="left"
+									style="border: 1px dashed #F00" size="1" /></td>
+						</tr>
+						<tr>
+							<td align="right">路径代码:</td>
+							<td><input id="path_code" class="easyui-textbox"
+								style="width: 120px" name="path_code" /></td>
+						</tr>
+						<tr>
+							<td colspan="6" align="right"><a href="#" id="search"
+								class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+								style="width: 80px">查询</a> <a href="#" id="clearBtn"
+								class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+								style="width: 80px">重置</a></td>
+						</tr>
+					</table>
+				</form>
+			</fieldset>
+		</div>
+		<br />
+		<hr style="border: 3px double blue" width="90%" size="3" align="left" />
+		<br />
+		<div>
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="addDIV"></div>
+	</div>
+</body>
+</html>

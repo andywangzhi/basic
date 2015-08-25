@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>楼盘查询</title>
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/basicinfo/css/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/basicinfo/css/icon.css">
+<script type="text/javascript" src="/basicinfo/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/basicinfo/js/common.js"></script>
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/api/mainandaffiliatedinfoquery/js/queryCommunityDetailLocation.js"></script>
+</head>
+<body>
+	<div>
+		<div>
+			<form id="searchFrom">
+				<table id="searchT"
+					style="cellpadding: 5px; font-size: 12px; border-spacing: 5px; width: 90%">
+					<tr>
+						<td align="right">路径代码:</td>
+						<td><input id="path_code" class="easyui-textbox"
+							style="width: 120px" name="path_code" /></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+							style="width: 80px">详细查询</a> <a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">重置</a></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div>
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="addDIV"></div>
+	</div>
+</body>
+</html>

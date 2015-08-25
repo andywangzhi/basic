@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>员工信息管理</title>
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/default/easyui.css" />
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/icon.css" />
+   <script type="text/javascript" src="/basicinfo/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/locale/easyui-lang-zh_CN.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/common.js"></script>
+   <script type="text/javascript" src="p_staff_info.js"></script>
+
+</head>
+<body>
+	<div>
+		<div >
+			<form id="searchFrom">
+			<fieldset style="color:#333; border:#06c dashed 1px;width: 80%">
+				<table id="searchT" style="cellpadding: 5px; font-size: 12px;border-spacing: 5px;width: 100%" >
+					<tr>
+						<td align="right">员工编号</td>
+						<td><input id="q_empNo" name="empNo"  /></td>
+						<td align="right">姓名</td>
+						<td ><input id="q_name" name="name" /></td>
+					</tr>
+					<tr>
+						<td colspan="6" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+							style="width: 80px">查询</a>
+							<a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">清除</a></td>
+					</tr>
+				</table>
+				</fieldset>
+			</form>
+		</div>
+		<div >
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="dlgDIV">
+			<form id="dataForm" method="post">
+				<input id="empNo" hidden="true" name="empNo">
+				<input id="createTime" hidden="true" name="createTime">
+				<table style="cellpadding: 5px">
+					<tr>
+						<td align="right">姓名</td>
+						<td><input id="name" class="easyui-validatebox"
+							required="required" name="name"  /></td>
+					</tr>
+					<tr>
+						<td align="right">手机号码</td>
+						<td><input id="phoneNum" class="easyui-validatebox" 
+						name="phoneNum"  required="required"/></td>
+					</tr>
+					<tr>
+						<td align="right">邮箱</td>
+						<td><input id="email" class="easyui-validatebox textbox" 
+						data-options="required:true,validType:'email'" name="email"  /></td>
+					</tr>
+					<tr>
+						<td align="right">性别</td>
+						<td><label >男</label>
+						<input type="radio" id="genderm" name="gender" value="M" checked="true" /> 
+						<label >女</label>
+						<input type="radio" id="genderF" name="gender" value="F"/></td>
+					</tr>
+					<tr>
+						<td align="right">生日</td>
+						<td><input id="birthday" class="easyui-datebox" name="birthDayStr"  /></td>
+					</tr>
+					<tr>
+						<td align="right">公司</td>
+						<td ><input id="compId" class="easyui-combobox"
+							style="width: 183px" name="compId" required="required"></td>
+					</tr>
+					<tr>
+						<td align="right">部门</td>
+						<td ><input id="deptId" class="easyui-combobox"
+							style="width: 183px" name="deptId" required="required"></td>
+					</tr>
+					<tr>
+						<td align="right">职位</td>
+						<td ><input id="positionId" class="easyui-combobox"
+							style="width: 183px" name="positionId"></td>
+					</tr>
+					<tr>
+						<td align="right">系统账户</td>
+						<td><input id="account" class="easyui-textbox" 
+							style="width: 183px" name="account" required="required" />
+						<a href="#" id="test" class="easyui-linkbutton" data-options="" style="width:60px">检测</a>
+						<div id="show_message"></div>
+						</td>
+					</tr>
+					<tr>
+					<td align="right">所属自定义组织</td>
+						<td ><input id="cOrgId" style="width: 183px" name="cOrgId"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div id="upload_file_div">
+			<form id="uploadDataForm" method="post" enctype="multipart/form-data">
+				<table style="cellpadding: 5px; cellspacing: 12 px;">
+					<tr>
+						<td align="right">所在公司:</td>
+						<td><input id="companyId" class="easyui-combobox"
+							style="width: 120px" name="companyId" required="required"/></td>
+					</tr>
+					<tr>
+						<td align="right">文件上传</td>
+						<td ><input type="file" id="uploadFile" name="uploadFile" ></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

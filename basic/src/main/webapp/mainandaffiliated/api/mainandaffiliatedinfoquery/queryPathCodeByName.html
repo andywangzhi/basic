@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>根据名称查询path_code</title>
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/basicinfo/css/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/basicinfo/css/icon.css">
+<script type="text/javascript" src="/basicinfo/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/basicinfo/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/basicinfo/js/common.js"></script>
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/js/apiCommon.js"></script>
+<script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/api/mainandaffiliatedinfoquery/js/queryPathCodeByName.js"></script>
+</head>
+<body>
+	<div>
+		<div>
+			<form id="searchFrom">
+				<table id="searchT"
+					style="cellpadding: 5px; font-size: 12px; border-spacing: 5px; width: 90%">
+					<tr>
+						<td align="right">楼盘名:</td>
+						<td><input id="community_name" class="easyui-combobox"
+							style="width: 120px"  /></td>
+						<td align="right">楼盘代码:</td>
+						<td><input id="community_path_code" class="easyui-textbox"
+							style="width: 120px" name="community_path_code" /></td>
+						<td align="right">分区名称:</td>
+						<td><input id="area_name" class="easyui-textbox"
+							style="width: 120px" name="area_name" /></td>
+					</tr>
+					<tr>
+						<td align="right">楼宇名称:</td>
+						<td><input id="building_name" class="easyui-textbox"
+							style="width: 120px" name="building_name" /></td>
+						<td align="right">楼层名称：</td>
+						<td><input class="easyui-textbox" id="floor_name"
+							style="width: 120px" name="floor_name" /></td>
+						<td align="right">单元名称：</td>
+						<td><input class="easyui-textbox" id="unit_name"
+							style="width: 120px" name="unit_name" /></td>
+					</tr>
+					<tr>
+						<td align="right">附属全路径名称(名称直接用:号分割):</td>
+						<td colspan="4"><input class="easyui-textbox" id="affiliated_full_path_name"
+							style="width: 820px" name="affiliated_full_path_name" /></td>
+					</tr>
+					<tr>
+						<td colspan="6" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+							style="width: 80px">详细查询</a> <a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">重置</a></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div>
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="addDIV"></div>
+	</div>
+</body>
+</html>

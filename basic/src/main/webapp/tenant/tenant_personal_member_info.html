@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>租户成员信息管理</title>
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/default/easyui.css" />
+   <link rel="stylesheet" type="text/css" href="/basicinfo/css/jquery.autocomplete.css">
+   <link rel="stylesheet" type="text/css" href="/basicinfo/js/themes/icon.css" />
+   <script type="text/javascript" src="/basicinfo/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.easyui.min.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/locale/easyui-lang-zh_CN.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/jquery.autocomplete.js"></script>
+   <script type="text/javascript" src="/basicinfo/js/common.js"></script>
+   <script type="text/javascript" src="tenant_personal_member_info.js"></script>
+   <script type="text/javascript"
+		src="/basicinfo/mainandaffiliated/js/apiCommon.js"></script>
+   <script type="text/javascript"
+	src="/basicinfo/mainandaffiliated/api/mainandaffiliatedinfoquery/js/districtTreeWithCbox.js"></script>
+
+</head>
+<body>
+	<div>
+		<div>
+			<fieldset style="width:80%">
+				<legend style="color: blue">查询条件</legend>
+				<form id="searchForm">
+					<input id="q_tenantId" hidden="true" name="tenantId"/>
+					<table id="tab_search" style="cellpadding:5px; font-size: 12px;border-spacing: 5px; width: 95%">
+						<tr>
+							<td align="right">租户成员姓名</td>
+							<td><input id="q_tenantMemberName" style="width: 120px" class="easyui-textbox" name="tenantMemberName"/></td>
+							<td align="right">所属租户姓名</td>
+							<td><input id="q_tenantName" style="width: 120px" name="tenantName"/></td>
+						</tr>
+						<tr>
+							<td colspan="6" align="right">
+								<a href="#" id="search" class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+								style="width: 80px">查询</a>
+								<a href="#" id="reSet" class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+								style="width: 80px">重置</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</fieldset>
+			<br />
+			<hr style="border: 3px double blue" width="80%" size="2" align="left" />
+			<br />
+			<div>
+				<table id="dataGrid" class="easyui-datagrid"></table>
+			</div>
+			<div id="baseDIV">
+				<form id="baseForm" method="post">
+					<input id="id" hidden="true" name="id"/>
+					<input id="tenantId" hidden="true" name="tenantId"/>
+					<input id="createTime" hidden="true" name="createTime"/>
+					<table style="cellpadding:5px">
+						<tr>
+							<td align="right">成员姓名</td>
+							<td><input id="tenantMemberName" class="easyui-validatebox" required="required"
+							name="tenantMemberName"/></td>
+						</tr>
+						<tr>
+							<td align="right">联系方式</td>
+							<td><input id="phoneNum" class="easyui-validatebox" data-options="validType:'phoneRex'" 
+							required="required" name="phoneNum"/></td>
+						</tr>
+						<tr>
+							<td align="right">所属租户</td>
+							<td><input id="tenantName"  required="required" name="tenantName"/></td>
+						</tr>
+						<tr class="tr_p">
+							<td align="right">系统账户</td>
+							<td><input id="account" class="easyui-textbox" 
+							name="account"  />
+							<a href="#" id="test" class="easyui-linkbutton" data-options="" style="width:60px">检测</a>
+							<div id="show_message"></div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>	
+	</div>
+</body>
+</html>
