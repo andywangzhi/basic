@@ -24,8 +24,8 @@
 	<!--  MyBatis Generator  -->
 	<!--  Java接口和实体类  -->
     <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
-    <targetMapperPackage>com.dashu.basicinfo.repository</targetMapperPackage>
-    <targetModelPackage>com.dashu.basicinfo.entity</targetModelPackage>
+    <targetMapperPackage>com.zw.repository</targetMapperPackage>
+    <targetModelPackage>com.zw.entity</targetModelPackage>
     <!--  XML生成路径  -->
     <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
     <targetXMLPackage>mybatis.mapper</targetXMLPackage>

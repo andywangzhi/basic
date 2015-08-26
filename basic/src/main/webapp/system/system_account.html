@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>用户管理</title>
+   <link rel="stylesheet" type="text/css" href="/basic/js/themes/default/easyui.css" />
+   <link rel="stylesheet" type="text/css" href="/basic/js/themes/icon.css" />
+   <script type="text/javascript" src="/basic/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/basic/js/jquery.easyui.min.js"></script>
+   <script type="text/javascript" src="/basic/js/locale/easyui-lang-zh_CN.js"></script>
+   <script type="text/javascript" src="/basic/js/common.js"></script>
+   <script type="text/javascript" src="system_account.js"></script>
+
+</head>
+<body>
+	<div>
+		<div >
+			<form id="searchFrom">
+			<fieldset style="color:#333; border:#06c dashed 1px;width: 80%">
+				<table id="searchT" style="cellpadding: 5px; font-size: 12px;border-spacing: 5px;width: 100%" >
+					<tr>
+						<td align="right">用户账号</td>
+						<td><input id="q_loginCode" name=loginCode  /></td>
+					</tr>
+					
+					<tr>
+						<td colspan="2" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+							style="width: 80px">查询</a>
+							<a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">清除</a></td>
+					</tr>
+				</table>
+				</fieldset>
+			</form>
+		</div>
+		<div >
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="dlgDIV">
+			<form id="dataForm" method="post"  enctype="multipart/form-data">
+				<input id="id" hidden="true" name="id">
+				<input id="createTime" hidden="true" name="createTime">
+				<input id="updateTime" hidden="true" name="updateTime">
+				<table style="cellpadding: 5px">
+					<tr>
+						<td align="right">登陆账号</td>
+						<td><input id="loginCode" class="easyui-validatebox"
+							required="required" name="loginCode"  /></td>
+					</tr>
+					<tr>
+						<td align="right">中文名</td>
+						<td><input id="nameCn" class="easyui-validatebox"
+							required="required" name="nameCn"  /></td>
+					</tr>
+					<tr>
+						<td align="right">英文名</td>
+						<td><input id="nameEn" class="easyui-validatebox"
+							 name="nameEn"  /></td>
+					</tr>
+					<tr>
+						<td align="right">密码</td>
+						<td><input id="password" class="easyui-validatebox"
+							required="required" name="password"  /></td>
+					</tr>
+					<tr>
+						<td align="right">重复密码</td>
+						<td><input id="password1" class="easyui-validatebox"
+							required="required" name="password1"  /></td>
+					</tr>
+					<tr>
+						<td align="right">性别</td>
+						<td><label >男</label>
+						<input type="radio" id="genderm" name="gender" value="M" checked="checked" /> 
+						<label >女</label>
+						<input type="radio" id="genderF" name="gender" value="F"/></td>
+					</tr>
+					<tr>
+						<td align="right">电话</td>
+						<td><input id="tel" class="easyui-validatebox"
+							required="required" name="tel"  /></td>
+					</tr>
+					<tr>
+						<td align="right">邮箱</td>
+						<td><input id="email" class="easyui-validatebox"
+							 name="email"  /></td>
+					</tr>
+					<tr>
+						<td align="right">地址</td>
+						<td><input id="address" class="easyui-validatebox"
+							 name="address"  /></td>
+					</tr>
+					<tr>
+						<td align="right">备注：</td>
+						<td ><input id="remark" class="easyui-textbox" 
+						data-options="multiline:true" style="width: 400px;height:100px" name="remark" />
+						</td>
+					</tr>					
+				</table>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

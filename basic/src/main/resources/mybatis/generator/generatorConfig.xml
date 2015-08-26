@@ -29,7 +29,7 @@
 
    	<javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}" type="XMLMAPPER"/>
 
-    <table tableName="mstb_device_info">
+    <table tableName="MSTB_SYS_ACCOUNT">
       <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
     </table>
 

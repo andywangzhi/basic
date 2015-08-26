@@ -18,10 +18,10 @@ public interface Constant {
 	public static final String EXPORT_TEMPLATE = "下载模板";
 
 	/** 数据状态 */
-	// 正常
-	public static final String DATA_STATUS_NORMAL = "0";
-	// 已删除
-	public static final String DATA_STATUS_DELETE = "1";
+	// 已删除 无效
+	public static final String DATA_STATUS_DELETE = "0";
+	// 正常 有效
+	public static final String DATA_STATUS_NORMAL = "1";
 
 	// like 查询的数据库标识符
 	public static final String FEILD_LIKE_SYMBOL = "%";

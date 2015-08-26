@@ -30,7 +30,7 @@ function submitForm() {
 	var param = $.fn.getFormParams("#saveForm");
 	$
 			.ajax({
-				url : "http://192.168.10.252/dashu-security/login/signIn.do",
+				url : "/basic/login/checkLogin",
 				data : param,
 				type : "POST",
 				dataType : 'JSON',
@@ -40,29 +40,18 @@ function submitForm() {
 				crossDomain : true,
 				success : function(data) {
 					remove_loading();
-					var obj = eval('(' + data + ')');
-					var status = obj.status;
-					if (status == 0) {
-						var token = obj.token;
+					var status = data.status;
+					if (status == 1) {
+						var token = data.token;
 						var host = document.domain;
 						addCookie("DASHUAUTHINFO", token, 20, host);
 						if (getURLParam('redirectURL') != null) {
 							window.location.href = getURLParam('redirectURL');
 						} else {
-							window.location.href = "/basicinfo/index.html";
+							window.location.href = "/basic/index.html";
 						}
 					} else {
-						var msg = obj.msg;
-						if (msg == "1") {
-							msg = "登录帐号为空";
-						} else if (msg == "2") {
-							msg = "登录密码为空";
-						} else if (msg == "3") {
-							msg = "登录帐号错误";
-						} else if (msg == "4") {
-							msg = "登录密码错误";
-						}
-						//$.messager.alert("操作提示", msg, "info");
+						var msg = data.content;
 						show_err_msg(msg);
 					}
 				}, failure:function (result) {  

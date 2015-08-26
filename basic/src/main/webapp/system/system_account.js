@@ -5,7 +5,7 @@
 var jQueryEasyUI;
 var datagridJQueryFind = "#dataGrid";
 var dataFormDiv = "#dataForm";
-var baseParamsUrl = '/basicinfo/system/template';
+var baseParamsUrl = '/basic/system/account';
 var formsubmitUrl;
 $(function() {
 	initDataGrid();
@@ -33,19 +33,6 @@ function initDataGrid() {
 				setDialog("#dlgDIV", '','新增');
 				clearFrom(dataFormDiv);
 				$("#dlgDIV").show();
-			}
-		},'-',{
-			text : '下载模板',
-			iconCls : 'icon-cut',
-			handler : function() {
-				var row = $(datagridJQueryFind).datagrid("getSelected");
-				if (row) {
-					alert('/basicinfo/'+row.templateRel);
-					window.location.href = '/basicinfo/'+row.templateRel;
-					
-				} else {
-					$.messager.alert("操作提示", "请选择要下载的模板", "info");
-				}
 			}
 		},'-',{
 			text : '编辑',
@@ -125,36 +112,54 @@ function initDataGrid() {
 			hidden : true,
 			sortable : true
 		}, {
-			field : 'templateName',
-			title : '模板名称 ',
+			field : 'loginCode',
+			title : '登陆账号 ',
 			width : 180,
 			align : 'center',
 			sortable : true
 		}, {
-			field : 'templateRel',
-			title : '模板地址',
-			width : 180,
+			field : 'nameCn',
+			title : '中文名',
+			width : 120,
+			align : 'center',
+			sortable : true
+		}, {
+			field : 'nameEn',
+			title : '英文名',
+			width : 120,
+			align : 'center',
+			sortable : true
+		}, {
+			field : 'gender',
+			title : '性别 ',
+			width : 90,
+			align : 'center',
+			sortable : true
+		}, {
+			field : 'tel',
+			title : '电话',
+			width :120,
+			align : 'center',
+			sortable : true
+		} , {
+			field : 'email',
+			title : '邮箱',
+			width :180,
+			align : 'center',
+			sortable : true
+		}, {
+			field : 'address',
+			title : '地址',
+			width :280,
 			align : 'center',
 			sortable : true
 		}, {
 			field : 'remark',
-			title : '描述',
-			width : 380,
-			align : 'center',
-			sortable : true
-		}, {
-			field : 'createTime',
-			title : '创建时间 ',
-			width : 180,
-			align : 'center',
-			sortable : true
-		}, {
-			field : 'updateTime',
-			title : '更新时间',
+			title : '备注',
 			width :180,
 			align : 'center',
 			sortable : true
-		} ] ]
+		}] ]
 	});
 }
 

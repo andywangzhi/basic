@@ -23,7 +23,18 @@
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <!--添加过滤器  create by 何振华 end  -->
+
+  <!-- 添加过滤器,判断是否登录 -->
+  	<filter> 
+		<filter-name>access</filter-name> 
+			<filter-class>com.zw.filter.AccessFilter</filter-class> 
+		</filter> 
+	<filter-mapping> 
+		<filter-name>access</filter-name> 
+		<url-pattern>*.html</url-pattern> 
+		<url-pattern>*.do</url-pattern> 
+		<url-pattern>*.json</url-pattern>
+	</filter-mapping> 
   <listener>
     <listener-class>
 	org.springframework.web.context.ContextLoaderListener</listener-class>
