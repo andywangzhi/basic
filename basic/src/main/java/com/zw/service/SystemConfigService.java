@@ -9,7 +9,7 @@ import com.zw.exception.BaseInfoException;
 /**
  * 
  *@Description:系统参数维护 
- *@author JASSON_XU
+ *@author andy_wang
  *@2015年6月4日上午10:36:14
  */
 public interface SystemConfigService extends BaseService<SystemConfig> {

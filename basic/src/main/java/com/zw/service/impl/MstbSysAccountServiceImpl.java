@@ -25,7 +25,7 @@ public class MstbSysAccountServiceImpl extends BaseServiceImpl<MstbSysAccount> i
 	public  MstbSysAccountMapper accountMapper;
 	
 	@Override
-	public List<MstbSysAccount> ListPageByEntity(MstbSysAccount entity, int pageNum, int pageSize)
+	public List<MstbSysAccount> listPageByEntity(MstbSysAccount entity, int pageNum, int pageSize)
 			throws BaseInfoException {
 		PageHelper.startPage(pageNum, pageSize);
 
@@ -114,6 +114,21 @@ public class MstbSysAccountServiceImpl extends BaseServiceImpl<MstbSysAccount> i
 			return list.get(0);
 		}
 		return null;
+	}
+
+	@Override
+	public Map<Object, Object> updatePassword(Integer id, String password) throws BaseInfoException {
+		BasicInfoServiceUtil.checkParam("ID", id);
+		BasicInfoServiceUtil.checkParam("密码", password);
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		map.put("id", id);
+		map.put("password", password);
+		int i = accountMapper.updatePassword(map);
+		if (i==1) {
+			return BasicInfoServiceUtil
+					.OperaSuccessMap(Constant.OPERATION_UPDATE);
+		}
+		return BasicInfoServiceUtil.OperaFailMap(Constant.OPERATION_UPDATE);
 	}
 
 }

@@ -10,4 +10,6 @@ public interface MstbSysAccountMapper extends Mapper<MstbSysAccount> {
 	public List<MstbSysAccount> listByExample(Map<Object, Object> params);
 	
 	public List<MstbSysAccount> getByUsernameAndPassword(Map<Object, Object> params);
+	
+	public  int updatePassword(Map<Object, Object> params);
 }

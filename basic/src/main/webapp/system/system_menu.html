@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>菜单管理</title>
+   <link rel="stylesheet" type="text/css" href="/basic/js/themes/default/easyui.css" />
+   <link rel="stylesheet" type="text/css" href="/basic/js/themes/icon.css" />
+   <script type="text/javascript" src="/basic/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/basic/js/jquery.easyui.min.js"></script>
+   <script type="text/javascript" src="/basic/js/locale/easyui-lang-zh_CN.js"></script>
+   <script type="text/javascript" src="/basic/js/common.js"></script>
+   <script type="text/javascript" src="system_menu.js"></script>
+
+</head>
+<body>
+	<div>
+		<div >
+			<form id="searchFrom">
+			<fieldset style="color:#333; border:#06c dashed 1px;width: 80%">
+				<table id="searchT" style="cellpadding: 5px; font-size: 12px;border-spacing: 5px;width: 100%" >
+					<tr>
+						<td align="right">菜单名称</td>
+						<td><input id="q_name" name="name"  /></td>
+					</tr>
+					
+					<tr>
+						<td colspan="2" align="right"><a href="#" id="search"
+							class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+							style="width: 80px">查询</a>
+							<a href="#" id="clearBtn"
+							class="easyui-linkbutton" data-options="iconCls:'icon-clear'"
+							style="width: 80px">清除</a></td>
+					</tr>
+				</table>
+				</fieldset>
+			</form>
+		</div>
+		<div >
+			<table id="dataGrid" class="easyui-datagrid"></table>
+		</div>
+		<div id="dlgDIV">
+			<form id="dataForm" method="post"  enctype="multipart/form-data">
+				<input id="id" hidden="true" name="id">
+				<input id="createTime" hidden="true" name="createTime">
+				<input id="updateTime" hidden="true" name="updateTime">
+				<input id="status" hidden="true" name="status">
+				<table style="cellpadding: 5px">
+					<tr>
+						<td align="right">名称</td>
+						<td><input id="name" class="easyui-validatebox"
+							required="required" name="name"  /></td>
+					</tr>
+					<tr>
+						<td align="right">url</td>
+						<td><input id="url" class="easyui-validatebox"
+							name="url"  /></td>
+					</tr>
+					<tr>
+						<td align="right">icon</td>
+						<td><input id="icon" class="easyui-validatebox"
+							name="icon"  /></td>
+					</tr>
+					<tr>
+						<td align="right">是否启用</td>
+						<td><label >是</label>
+						<input type="radio" id="isValid1" name="isValid" value="1" checked="checked"  /> 
+						<label >否</label>
+						<input type="radio" id="isValid0" name="isValid" value="0"/></td>
+					</tr>
+					<tr>
+						<td align="right">上级菜单</td>
+						<td><input id="q_parentId" name="parentId" 
+						class="easyui-combobox" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

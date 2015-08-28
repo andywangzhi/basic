@@ -42,7 +42,10 @@
 			<if test="loginCode !=null and loginCode !='' ">
 				and LOGIN_CODE = #{loginCode,jdbcType=VARCHAR}
 			</if>
-			</where>
+			<if test="name != null  and name !='' ">
+				and name like CONCAT('%','${name}','%' )
+			</if>
+		</where>
 		<if
 			test="(orderBy != null and sort == null) or (orderBy != null and sort == 'asc') 
 			or (orderBy != null and sort == 'desc')">
@@ -60,4 +63,17 @@
 			 PASSWORD =  #{password,jdbcType=VARCHAR}
 		 </where>
   </select>
+  
+  <update id="updatePassword" parameterType="map">
+  	update MSTB_SYS_ACCOUNT set password= #{password,jdbcType=VARCHAR}
+  		<where>
+			<if test="id != null">
+				id=#{id,jdbcType=INTEGER}
+			</if>
+			<if test="loginCode !=null and loginCode !='' ">
+				LOGIN_CODE =${loginCode,jdbcType=VARCHAR}
+			</if>
+		 </where> 
+  		
+  </update>
 </mapper>

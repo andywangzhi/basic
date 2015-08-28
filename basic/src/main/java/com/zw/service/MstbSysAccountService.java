@@ -7,7 +7,7 @@ import com.zw.entity.MstbSysAccount;
 import com.zw.exception.BaseInfoException;
 
 public interface MstbSysAccountService extends BaseService<MstbSysAccount>{
-	public List<MstbSysAccount> ListPageByEntity(MstbSysAccount entity,
+	public List<MstbSysAccount> listPageByEntity(MstbSysAccount entity,
 			int pageNum, int pageSize) throws BaseInfoException;
 
 	public Map<Object, Object> saveByEntity(MstbSysAccount entity)
@@ -20,5 +20,8 @@ public interface MstbSysAccountService extends BaseService<MstbSysAccount>{
 			throws BaseInfoException;
 	
 	public MstbSysAccount findByUsernameOrpassword(String username,String password)
+			throws BaseInfoException;
+	
+	public Map<Object, Object> updatePassword(Integer id,String password)
 			throws BaseInfoException;
 }
